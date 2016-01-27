@@ -1,6 +1,7 @@
 package edu.upenn.cis350.hwk1;
 
 import java.util.*;
+import java.util.logging.Level;
 
 /**
  * Created by RajatBhageria on 1/24/16.
@@ -40,9 +41,13 @@ public class Parse {
     }
 
     public TreeMap<Double, String> lowestDifficultyRatio(){
+        treeGenerator();
+        return ratioTree;
+    }
+
+    private void treeGenerator(){
         String[] courseData = data.get(0);
         String course = courseData[0];
-        TreeMap<Double, String> out = new TreeMap<Double, String>();
         int totalNumberOfStudents=Integer.parseInt(courseData[2]);
         double courseDifficulty=Double.parseDouble(courseData[4]);
         double courseQuality=Double.parseDouble(courseData[3]);
@@ -61,21 +66,28 @@ public class Parse {
             if (course.equals(tempCourse)){
                 totalDifficulty += tempTotalCourseDifficulty;
                 totalQuality +=tempTotalCourseQuality;
+                totalNumberOfStudents+=tempNumberOfStudents;
 
             } else if (!course.equals(tempCourse)){
                 ratio = totalDifficulty/totalQuality;
-                out.put(ratio, course);
+                ratioTree.put(ratio, course);
+                qualityTree.put(totalQuality/totalNumberOfStudents,course);
                 course = tempCourse;
                 totalDifficulty = tempTotalCourseDifficulty;
                 totalQuality =tempTotalCourseQuality;
+                totalNumberOfStudents = tempNumberOfStudents;
             }
 
         }
 
-        /*
+    }
 
-        */
-        return out;
+    private TreeMap<Double, String> ratioTree = new TreeMap<Double, String>();;
+    private TreeMap<Double, String> qualityTree = new TreeMap<Double, String>();;
+
+    public TreeMap<Double,String> coursesAboveQualityRating(){
+        treeGenerator();
+        return qualityTree;
     }
 
 }

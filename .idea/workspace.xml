@@ -22,15 +22,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Parse.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/Parse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5766129">
-              <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="89" column="6" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
               <folding>
-                <element signature="e#562#570#0" expanded="true" />
-                <element signature="e#621#629#0" expanded="true" />
-                <element signature="e#1326#1342#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#594#602#0" expanded="true" />
+                <element signature="e#653#661#0" expanded="true" />
+                <element signature="e#3074#3090#0" expanded="true" />
+                <element signature="e#3156#3172#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.037037">
-              <caret line="149" column="40" selection-start-line="149" selection-start-column="40" selection-end-line="149" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.6801706">
+              <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -386,9 +388,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#562#570#0" expanded="true" />
-            <element signature="e#621#629#0" expanded="true" />
-            <element signature="e#1326#1342#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#653#661#0" expanded="true" />
+            <element signature="e#3074#3090#0" expanded="true" />
+            <element signature="e#3156#3172#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -414,9 +418,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
-            <element signature="e#562#570#0" expanded="true" />
-            <element signature="e#621#629#0" expanded="true" />
-            <element signature="e#1326#1342#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#653#661#0" expanded="true" />
+            <element signature="e#3074#3090#0" expanded="true" />
+            <element signature="e#3156#3172#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -437,14 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/ratings.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="155" column="37" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/util/TreeMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7560484">
@@ -453,23 +451,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/ratings.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.037037">
-          <caret line="149" column="40" selection-start-line="149" selection-start-column="40" selection-end-line="149" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="155" column="37" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/Parse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5766129">
-          <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="6" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
           <folding>
-            <element signature="e#562#570#0" expanded="true" />
-            <element signature="e#621#629#0" expanded="true" />
-            <element signature="e#1326#1342#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#653#661#0" expanded="true" />
+            <element signature="e#3074#3090#0" expanded="true" />
+            <element signature="e#3156#3172#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/upenn/cis350/hwk1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6801706">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
