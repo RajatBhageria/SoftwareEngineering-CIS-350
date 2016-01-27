@@ -1,10 +1,6 @@
 package edu.upenn.cis350.hwk1;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Created by RajatBhageria on 1/24/16.
@@ -16,11 +12,9 @@ public class Parse {
         for (int i = 0; i < array.size(); i++){
             String[] test = array.get(i).split(", ");
             data.add(test);
-            //System.out.println(test[0]);
 
         }
     }
-
 
     public ArrayList<String> coursesByInstructor(String instructor){
         instructor = instructor.toUpperCase();
@@ -33,27 +27,55 @@ public class Parse {
                 wholeInstructor=data.get(i)[1];
             }
         }
+        //Convert set to array
         array.addAll(set);
+
+        //Sort the array
         Collections.sort(array);
+
+        //Add the instructor's name to top of array being returned
         array.add(0,wholeInstructor);
         return array;
 
-        /*for (int i = 0; i < data.size(); i++){
-            String teacher = data.get(i)[1];
-            if (!map.containsKey(teacher)){
-                map.put(teacher.toLowerCase(), new ArrayList<>());
-                map.get(teacher).add(data.get(i)[0]);
-            }
-            else{
-                map.get(teacher).add(data.get(i)[0]);
-            }
-        }
-        if (map.containsKey(instructor.toLowerCase())){
-            for (int j = 0; j < map.values().size();j++){
-                String courseName = map.get(instructor.toLowerCase()).get(j);
-                courses.add(courseName);
-            }*/
-
-
     }
+
+    public TreeMap<Double, String> lowestDifficultyRatio(){
+        String[] courseData = data.get(0);
+        String course = courseData[0];
+        TreeMap<Double, String> out = new TreeMap<Double, String>();
+        int totalNumberOfStudents=Integer.parseInt(courseData[2]);
+        double courseDifficulty=Double.parseDouble(courseData[4]);
+        double courseQuality=Double.parseDouble(courseData[3]);
+        double totalDifficulty =courseDifficulty*totalNumberOfStudents;
+        double totalQuality =courseQuality *totalNumberOfStudents;
+        double ratio = 0;
+        for (int i = 1; i < data.size(); i++){
+            String[] tempCourseData = data.get(i);
+            String tempCourse=tempCourseData[0];
+            int tempNumberOfStudents=Integer.parseInt(tempCourseData[2]);
+            double tempCourseDifficulty=Double.parseDouble(tempCourseData[4]);
+            double tempCourseQuality=Double.parseDouble(tempCourseData[3]);
+            double tempTotalCourseDifficulty = tempCourseDifficulty *tempNumberOfStudents;
+            double tempTotalCourseQuality = tempCourseQuality *tempNumberOfStudents;
+
+            if (course.equals(tempCourse)){
+                totalDifficulty += tempTotalCourseDifficulty;
+                totalQuality +=tempTotalCourseQuality;
+
+            } else if (!course.equals(tempCourse)){
+                ratio = totalDifficulty/totalQuality;
+                out.put(ratio, course);
+                course = tempCourse;
+                totalDifficulty = tempTotalCourseDifficulty;
+                totalQuality =tempTotalCourseQuality;
+            }
+
+        }
+
+        /*
+
+        */
+        return out;
+    }
+
 }

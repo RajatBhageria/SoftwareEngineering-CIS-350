@@ -9,7 +9,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -27,36 +29,58 @@ public class Main {
         ArrayList<String> list = Main.Reader(fileName);
 
         Parse parser = new Parse(list);
+        Logger logger = Main.Logger(logName);
 
         Scanner scan = new Scanner (System.in);
 
         Main.MainMenu();
+
         String input = scan.nextLine();
+        logger.log(Level.INFO, input);
 
         while (!input.equalsIgnoreCase("q")){
             if (input.equals("4")){
                 System.out.println("Please enter the name of the instructor whose courses you want to see");
                 String instructor = scan.nextLine();
                 ArrayList<String> answer = parser.coursesByInstructor(instructor);
-                String output = "";
-                for (String e: answer){
-                    output += e + ", ";
+                if (answer.isEmpty()){
+                    //System.out.println("Sorry no instructor or courses found");
+                    logger.log(Level.INFO,"Sorry no instructor or courses found");
                 }
-                output = output.substring(0,output.length()-2);
-                System.out.println(output);
+                else{
+                    String output = "";
+                    for (String e: answer){
+                        output += e + ", ";
+                    }
+                    output = output.substring(0,output.length()-2);
+                    logger.log(Level.INFO, output);
+                    //System.out.println(output);
+                }
+
 
             } else if (input.equals("5")){
-
+                System.out.println("The Five Easiest Courses (Organzied by Quality:Difficulty Ratio Are : ");
+                TreeMap<Double, String> map = parser.lowestDifficultyRatio();
+                for (int i =0; i < 5; i++){
+                    Double rating =(Double) map.keySet().toArray()[i];
+                    String courses = (String) map.values().toArray()[i];
+                    //System.out.println(courses + ": " + rating);
+                    logger.log(Level.INFO, courses + ": " + rating);
+                }
             } else if (input.equals("6")){
 
             } else if (input.equalsIgnoreCase("Q")){
                 System.exit(1);
             }
+            else{
+                continue;
+            }
             MainMenu();
             input = scan.nextLine();
+            logger.log(Level.INFO, input);
+
         }
 
-        Main.Logger(logName);
 
     }
 
@@ -95,34 +119,38 @@ public class Main {
     }
 
 
-    public static void Logger(String name){
-        Logger logger = Logger.getLogger(name);
+    public static Logger Logger(String name){
+        logger = Logger.getLogger(name);
         FileHandler fh;
 
         String fileName = "src/edu/upenn/cis350/hwk1/" + name;
         try {
-
             fh = new FileHandler(fileName);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
-
-            logger.info("My first log");
-
+            fh.close();
         } catch (SecurityException e) {
             e.printStackTrace();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        return logger;
     }
 
     public static void MainMenu(){
-        System.out.println("Here are your options:");
-        System.out.println("Find all courses taught by a specified instructor (Press 4)\n" +
+        String options = ("Here are your options:");
+        String allOptions = ("Find all courses taught by a specified instructor (Press 4)\n" +
                 "Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)\n" +
                 "Find all courses at or above a specified quality rating across all offerings (Press 6)\n" +
                 "Quit the program (Press Q)");
+        //System.out.println(options);
+        //System.out.println(allOptions);
+        logger.log(Level.INFO, options);
+        logger.log(Level.INFO, allOptions);
     }
+
+    private static Logger logger;
 
 }
