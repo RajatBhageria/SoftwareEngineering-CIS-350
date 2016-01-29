@@ -40,8 +40,9 @@ public class Main {
 
         while (!input.equalsIgnoreCase("q")){
             if (input.equals("4")){
-                System.out.println("Please enter the name of the instructor whose courses you want to see");
+                logger.info("Please enter the name of the instructor whose courses you want to see");
                 String instructor = scan.nextLine();
+                logger.info("The instructor you searched for is: " + instructor);
                 ArrayList<String> answer = parser.coursesByInstructor(instructor);
                 if (answer.isEmpty()){
                     //System.out.println("Sorry no instructor or courses found");
@@ -75,17 +76,18 @@ public class Main {
                 for (int i =0; i < qualityTree.values().size(); i++){
                     Double quality =(Double) qualityTree.keySet().toArray()[i];
                     String courses = (String) qualityTree.values().toArray()[i];
-                    
+
                     if (quality >= minQuality ){
-                        System.out.println(courses + ", " + quality);
+                        logger.log(Level.INFO,courses + ", " + quality);
                     }
                 }
 
             } else if (input.equalsIgnoreCase("Q")){
+                logger.info("program ended");
                 System.exit(1);
             }
             else{
-                continue;
+                logger.info("Please enter either '4,' '5,' '6,' or 'q'");
             }
             MainMenu();
             input = scan.nextLine();
@@ -104,9 +106,7 @@ public class Main {
             BufferedReader bufferReader;
             FileReader inputFile;
             if (file.canRead() && !file.isHidden()){
-                //Create object of FileReader
                 inputFile = new FileReader(file);
-                //Instantiate the BufferedReader Class
                 bufferReader= new BufferedReader(inputFile);
 
                 //Variable to hold the one line data
@@ -118,10 +118,17 @@ public class Main {
                 }
                 //Close the buffer reader
                 bufferReader.close();
-
+            }
+            else if (!file.canRead()){
+                logger.log(Level.ALL,"Sorry file cannot be read");
+                System.exit(0);
+            }
+            else if (!file.isHidden()){
+                logger.log(Level.ALL,"Sorry file is hidden");
+                System.exit(0);
             }
         }catch(Exception e){
-            System.out.println("Error while reading file line by line:" + e.getMessage());
+            logger.log(Level.FINE,"Error while reading file line by line:" + e.getMessage());
         }
 
         return array;
@@ -154,10 +161,11 @@ public class Main {
                 "Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)\n" +
                 "Find all courses at or above a specified quality rating across all offerings (Press 6)\n" +
                 "Quit the program (Press Q)");
-        //System.out.println(options);
-        //System.out.println(allOptions);
-        logger.log(Level.INFO, options);
-        logger.log(Level.INFO, allOptions);
+        //logger.log(Level.INFO, options);
+        logger.info(options);
+        //logger.log(Level.INFO, allOptions);
+        logger.info(allOptions);
+
     }
 
     private static Logger logger;
