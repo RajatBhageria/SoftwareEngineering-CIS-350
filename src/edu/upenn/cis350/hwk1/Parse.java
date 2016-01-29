@@ -1,8 +1,6 @@
 package edu.upenn.cis350.hwk1;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.logging.Level;
 
 /**
  * Created by RajatBhageria on 1/24/16.
@@ -18,6 +16,11 @@ public class Parse {
         }
     }
 
+    /*
+        This is the method that returns the courses taught by a particular instructor
+        @param The name of the instructor
+        @return an an ArrayList with the instructor's name at index 0 and then all the courses taught by the instructor.
+     */
     public ArrayList<String> coursesByInstructor(String instructor){
         instructor = instructor.toUpperCase();
         HashSet<String> set = new HashSet<String>();
@@ -42,92 +45,11 @@ public class Parse {
     }
 
 
- /*   private void treeGenerator(){
-        String[] courseData = data.get(0);
-        String course = courseData[0];
-        String courseShortened = course.substring(0,course.indexOf("-",6));
-        int totalNumberOfStudents=Integer.parseInt(courseData[2]);
-        double courseDifficulty=Double.parseDouble(courseData[4]);
-        double courseQuality=Double.parseDouble(courseData[3]);
-        double totalDifficulty =courseDifficulty*totalNumberOfStudents;
-        double totalQuality =courseQuality *totalNumberOfStudents;
-        double ratio = 0;
-        for (int i = 1; i < data.size(); i++){
-            String[] tempCourseData = data.get(i);
-            String tempCourse=tempCourseData[0];
-            String tempCourseShortened = tempCourse.substring(0,tempCourse.indexOf("-",6));
-            int tempNumberOfStudents=Integer.parseInt(tempCourseData[2]);
-            double tempCourseDifficulty=Double.parseDouble(tempCourseData[4]);
-            double tempCourseQuality=Double.parseDouble(tempCourseData[3]);
-            double tempTotalCourseDifficulty = tempCourseDifficulty *tempNumberOfStudents;
-            double tempTotalCourseQuality = tempCourseQuality *tempNumberOfStudents;
-
-            if (course.equals(tempCourse)){
-                totalDifficulty += tempTotalCourseDifficulty;
-                totalQuality +=tempTotalCourseQuality;
-                totalNumberOfStudents+=tempNumberOfStudents;
-
-            } else if (!course.equals(tempCourse) && !courseShortened.equals(tempCourseShortened)){
-                ratio = totalDifficulty/totalQuality;
-                ratioTree.put(ratio, course);
-                qualityTree.put(totalQuality/totalNumberOfStudents,course);
-                course = tempCourse;
-                totalDifficulty = tempTotalCourseDifficulty;
-                totalQuality =tempTotalCourseQuality;
-                totalNumberOfStudents = tempNumberOfStudents;
-            }
-
-        }
-
-    }*/
-
-
-
-/*    private void treeGeneratorHelper(int initial){
-        String[] courseData = data.get(initial);
-        if (data.get(initial) == null) return;
-        else {
-            String course = courseData[0];
-            //String courseShortened = course.substring(0,course.indexOf("-",6));
-            int totalNumberOfStudents=Integer.parseInt(courseData[2]);
-            double courseDifficulty=Double.parseDouble(courseData[4]);
-            double courseQuality=Double.parseDouble(courseData[3]);
-            double totalDifficulty =courseDifficulty*totalNumberOfStudents;
-            double totalQuality =courseQuality *totalNumberOfStudents;
-            data.set(initial,null);
-            double ratio = 0;
-            for (int i = 1; i < data.size(); i++) {
-                if (data.get(i) == null) break;
-                String[] tempCourseData = data.get(i);
-                String tempCourse = tempCourseData[0];
-                //String tempCourseShortened = tempCourse.substring(0, tempCourse.indexOf("-", 6));
-                int tempNumberOfStudents = Integer.parseInt(tempCourseData[2]);
-                double tempCourseDifficulty = Double.parseDouble(tempCourseData[4]);
-                double tempCourseQuality = Double.parseDouble(tempCourseData[3]);
-                double tempTotalCourseDifficulty = tempCourseDifficulty * tempNumberOfStudents;
-                double tempTotalCourseQuality = tempCourseQuality * tempNumberOfStudents;
-                if (course.equals(tempCourse)) {
-                    totalDifficulty += tempTotalCourseDifficulty;
-                    totalQuality += tempTotalCourseQuality;
-                    totalNumberOfStudents += tempNumberOfStudents;
-                    data.set(i,null);
-                }
-            }
-            ratio = totalDifficulty/totalQuality;
-            ratioTree.put(ratio, course);
-            qualityTree.put(totalQuality/totalNumberOfStudents,course);
-        }
-
-
-    }
-
-    private void treeGenerator(){
-       for (int i = 0; i < data.size();i++){
-           treeGeneratorHelper(i);
-       }
-    }*/
-
-
+    /*
+        Helps generate the editedCourseData tree. This tree maps the course name to an array with the course data
+        The array contains at index 0 the number of students in the course, at index 1 the total courseDifficulty, and
+        at index 2 the total course quality.
+     */
     private void treeGeneratorHelper(){
 
         for (int i = 0; i < data.size(); i++){
@@ -146,6 +68,10 @@ public class Parse {
 
         }
     }
+    /*
+        This method generates the ratioTree and qualityTree using the editedCourseData. The former two trees
+        map the course ratio or the course quality to the course name.
+     */
     public void treeGenerator(){
         treeGeneratorHelper();
         for (int i = 0; i < editedCourseData.size(); i++) {
@@ -161,19 +87,25 @@ public class Parse {
         }
     }
 
-
     private TreeMap<String, Double[]> editedCourseData = new TreeMap<String, Double[]>();;
     private TreeMap<Double, String> ratioTree = new TreeMap<Double, String>();;
     private TreeMap<Double, String> qualityTree = new TreeMap<Double, String>();;
 
+    /*
+        A method that uses treeGenerator() to generate a tree mapping the total course quality to the course name
+        @return Returns a treeMap mapping course quality to course name for all the courses
+     */
     public TreeMap<Double,String> coursesAboveQualityRating(){
         treeGenerator();
         return qualityTree;
     }
+
+    /*
+        A method that uses treeGenerator() to generate a tree mapping the course difficulty/quality ratio to  name
+        @return Returns a treeMap mapping mapping the course difficulty/quality ratio to course name
+    */
     public TreeMap<Double, String> lowestDifficultyRatio(){
         treeGenerator();
         return ratioTree;
     }
-
-
 }

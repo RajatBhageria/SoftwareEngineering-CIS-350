@@ -5,9 +5,7 @@ package edu.upenn.cis350.hwk1;
  */
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.logging.FileHandler;
@@ -21,7 +19,7 @@ public class Main {
 
         if (args.length != 2) {
             System.out.println("Please enter 2 arguments: the course evaluations and the log file");
-            //System.exit(0);
+            System.exit(0);
         }
 
         String fileName = (String) args[0];
@@ -79,7 +77,7 @@ public class Main {
                     //System.out.println(courses);
                     //System.out.println(quality);
                     if (quality >= minQuality){
-                        System.out.println(courses);
+                        //System.out.println(courses);
                         logger.log(Level.INFO,courses + ", " + quality);
                     }
                 }
@@ -96,7 +94,12 @@ public class Main {
             logger.log(Level.INFO, input);
         }
     }
-
+    /*
+        A method that handles all the file input
+        @param A string with the filename for the input file
+        @return A ArrayList with all the course data (each element has the comma separated
+        string for each course
+     */
     public static ArrayList<String> Reader(String fileName){
         // The name of the file to open.
         fileName = "src/edu/upenn/cis350/hwk1/" + fileName;
@@ -136,7 +139,11 @@ public class Main {
         return array;
     }
 
-
+    /*
+    A method that sets up the logger to log all the data in the .log file
+    @return a Logger
+    @param a String with the name of the .log file to search for.
+     */
     public static Logger Logger(String name){
         logger = Logger.getLogger(name);
         FileHandler fh;
@@ -157,6 +164,9 @@ public class Main {
         return logger;
     }
 
+    /*
+    A method that sets up the main menu that tells the user all the options he/she has.
+     */
     public static void MainMenu(){
         String options = ("Here are your options:");
         String allOptions = ("Find all courses taught by a specified instructor (Press 4)\n" +
