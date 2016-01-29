@@ -69,15 +69,17 @@ public class Main {
                     logger.log(Level.INFO, courses + ": " + rating);
                 }
             } else if (input.equals("6")){
-                System.out.println("Please enter the minimum course quality you want");
+                logger.info("Please enter the minimum course quality you want");
                 Double minQuality = (Double) Double.parseDouble(scan.nextLine());
                 logger.log(Level.INFO,"The courses with a quality rating above " + minQuality + " are:");
                 TreeMap<Double, String> qualityTree = parser.coursesAboveQualityRating();
                 for (int i =0; i < qualityTree.values().size(); i++){
                     Double quality =(Double) qualityTree.keySet().toArray()[i];
                     String courses = (String) qualityTree.values().toArray()[i];
-
-                    if (quality >= minQuality ){
+                    //System.out.println(courses);
+                    //System.out.println(quality);
+                    if (quality >= minQuality){
+                        System.out.println(courses);
                         logger.log(Level.INFO,courses + ", " + quality);
                     }
                 }
@@ -145,7 +147,7 @@ public class Main {
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
-            fh.close();
+            //fh.close();
         } catch (SecurityException e) {
             e.printStackTrace();
         }
