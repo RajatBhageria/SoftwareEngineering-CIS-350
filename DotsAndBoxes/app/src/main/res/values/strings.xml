@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DotsAndBoxes</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="welcome">Welcome to Dots and Boxes!</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="spinner_prompt">Select Board Size: </string>
+
+    <string-array name="spinner_array">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+</resources>
