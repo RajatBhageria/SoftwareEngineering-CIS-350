@@ -6,8 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.media.session.MediaControllerCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+
+import java.util.logging.Level;
 
 /**
  * Created by RajatBhageria on 2/13/16.
@@ -20,24 +24,23 @@ public class GameView extends View {
         super(c, a);
     }
     public void onDraw(Canvas canvas){
+        Log.v("Here","mine");
         Bitmap img = BitmapFactory.decodeResource(getResources(),
                 R.drawable.dot);
-        for (int i = 0; i < canvas.getWidth(); i++){
-            for (int j = 0; j < canvas.getHeight(); j++){
-
+        canvas.drawBitmap(img,30,30,null);
+        /*int width = canvas.getWidth();
+        int height = canvas.getHeight();
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                canvas.drawBitmap(img, i, j, null);
             }
         }
-        canvas.drawBitmap(img, 30, 30, null);
-
         Paint p = new Paint();
         p.setColor(Color.RED);
         p.setStrokeWidth(10);
-        canvas.drawLine(40, 20, 60, 50, p);
-
+        canvas.drawLine(40, 20, 60, 50, p);*/
     }
-
-
     public void onTouchEvent(View view){
-
+        //®Log.v("Here","two");
     }
 }

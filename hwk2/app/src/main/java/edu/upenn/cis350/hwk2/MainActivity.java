@@ -3,7 +3,7 @@ package edu.upenn.cis350.hwk2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import android.view.View;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,20 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onPlayButtonClick(){
+    public void onPlayButtonClick(View view){
         Intent i = new Intent(this, GameActivity.class);
-        startActivityForResult(i, GameActivity_ID);
-        i.putExtra("BOARDSIZE",boardSize);
-        startActivityForResult(i, GameActivity_ID);
-
-
+        i.putExtra("BOARDSIZE", boardSize);
+        startActivity(i);
     }
-    private static final int GameActivity_ID = 1;
-    private static int boardSize = 0;
+    private static String boardSize ="";
 
     public void initSpinner() {
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-        String text = mySpinner.getSelectedItem().toString();
-        System.out.println(text);
+        String boardSize = mySpinner.getSelectedItem().toString();
     }
 }
