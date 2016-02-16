@@ -16,4 +16,7 @@ public class Point {
     public int getY(){
         return mYCoord;
     }
+    public boolean isCorrectPoint(float xPixelChosen, float yPixelChosen){
+        return (Math.abs(xPixelChosen - mXCoord) <=100) && (Math.abs(yPixelChosen - mYCoord) <=100);
+    }
 }

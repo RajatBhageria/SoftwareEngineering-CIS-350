@@ -4,6 +4,7 @@ import android.hardware.SensorEvent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
@@ -13,7 +14,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.v("Here", "here");
         //setContentView(new GameView(this));
         setContentView(R.layout.activity_game);
 
@@ -29,7 +29,6 @@ public class GameActivity extends AppCompatActivity {
         }
         System.out.println("size of the board is:" + data);
         boardSize = Integer.parseInt(data);
-        System.out.println(boardSize);
 
     }
 
@@ -42,6 +41,9 @@ public class GameActivity extends AppCompatActivity {
     public int getBoardSize(){
         return boardSize;
     }
-
+    public boolean onCreateOptionsMenu(Menu menu){
+        //getMenuInflater().inflate(R.menu)
+        return true;
+    }
 
 }

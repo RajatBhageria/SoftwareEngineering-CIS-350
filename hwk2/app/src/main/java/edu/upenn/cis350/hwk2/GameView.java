@@ -7,12 +7,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 
 /**
@@ -24,8 +27,15 @@ public class GameView extends View {
     }
     public GameView(Context c, AttributeSet a) {
         super(c, a);
+        p.setAntiAlias(true);
+        p.setStrokeWidth(10);
+        p.setStyle(Paint.Style.STROKE);
+        p.setStrokeJoin(Paint.Join.ROUND);
+        p.setStrokeCap(Paint.Cap.ROUND);
     }
+
     private Point[][] board;
+    private ArrayList<Line> lines = new ArrayList<Line>();
     public void onDraw(Canvas canvas){
         int boardSize =  GameActivity.boardSize;
         Bitmap img = BitmapFactory.decodeResource(getResources(),
@@ -40,25 +50,73 @@ public class GameView extends View {
             for (int j = boardSize +100; j < height && numberOfDotsY <= boardSize; j+=heightGap){
                 canvas.drawBitmap(img, i, j, null);
                 board = new Point[boardSize][boardSize];
-                board[numberOfDotsX][numberOfDotsY] =new Point(i, j);
+                board[numberOfDotsX][numberOfDotsY] =new Point(numberOfDotsX, numberOfDotsY);
                 numberOfDotsX++;
             }
             numberOfDotsY++;
             numberOfDotsX=0;
         }
-        /*
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStrokeWidth(10);
-        canvas.drawLine(40, 20, 60, 50, p);
-        */
+        mCanvas = canvas;
+        for (int i = 0; i < lines.size(); i++){
+            Line line = lines.get(i);
+            if (line.getStartX() != 0){
+                canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), p);
+            }
+        }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent e){
-        float x = e.getX();
-        float y = e.getY();
+    private Canvas mCanvas = null;
+    private Paint p = new Paint();
+    private Path path = new Path();
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        float x = event.getX();
+        float y = event.getY();
+        Point startingPoint = null;
+
+        Line line = new Line();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                line.setStart(x, y);
+                lines.add(line);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                line = lines.get(lines.size()-1);
+                line.setEnd(x, y);
+                mCanvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), p);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_UP:
+                lines.get(lines.size()-1).setEnd(x,y);
+                lines.add(line);
+                invalidate();
+
+                break;
+            default:
+                return false;
+        }
         return true;
+
+
+        /*
+       switch (event.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+               *//* for (int i = 0; i < board.length; i++){
+                    for (int j = 0; j < board[i].length; j++){
+                        if (board[i][j].isCorrectPoint(x,y)){
+                            startingPoint = board[i][j];
+                            mCanvas.drawLine(startingPoint.getX(), startingPoint.getY(), 60, 50, mPaint);
+
+                        }
+                    }
+                }*//*
+                invalidate();
+                break;
+
+        }*/
     }
 }
