@@ -1,5 +1,6 @@
 package edu.upenn.cis350.hwk2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initSpinner();
     }
-    public void onQuitButtonClick(){
-
+    public void onQuitButtonClick(View view){
+        finish();
+        System.exit(0);
     }
 
     public void onPlayButtonClick(View view){

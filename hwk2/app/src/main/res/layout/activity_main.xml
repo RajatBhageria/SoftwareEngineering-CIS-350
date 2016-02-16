@@ -25,7 +25,8 @@
         android:layout_alignLeft="@+id/welcome"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/welcome"
-        android:text="Quit" />
+        android:text="Quit"
+        android:onClick="onQuitButtonClick"/>
 
     <TextView
         android:id="@+id/welcome"

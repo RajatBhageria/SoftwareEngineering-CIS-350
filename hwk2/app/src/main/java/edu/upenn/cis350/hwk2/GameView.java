@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.logging.Level;
@@ -24,6 +25,7 @@ public class GameView extends View {
     public GameView(Context c, AttributeSet a) {
         super(c, a);
     }
+    private Point[][] board;
     public void onDraw(Canvas canvas){
         int boardSize =  GameActivity.boardSize;
         Bitmap img = BitmapFactory.decodeResource(getResources(),
@@ -37,7 +39,7 @@ public class GameView extends View {
         for (int i = boardSize +100; i < width && numberOfDotsX<= boardSize; i+=widthGap){
             for (int j = boardSize +100; j < height && numberOfDotsY <= boardSize; j+=heightGap){
                 canvas.drawBitmap(img, i, j, null);
-                Point[][] board = new Point[boardSize][boardSize];
+                board = new Point[boardSize][boardSize];
                 board[numberOfDotsX][numberOfDotsY] =new Point(i, j);
                 numberOfDotsX++;
             }
@@ -51,7 +53,12 @@ public class GameView extends View {
         canvas.drawLine(40, 20, 60, 50, p);
         */
     }
-    public void onTouchEvent(View view){
-        //®Log.v("Here","two");
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        float x = e.getX();
+        float y = e.getY();
+
+        return true;
     }
 }
