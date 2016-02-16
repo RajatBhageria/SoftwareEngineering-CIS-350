@@ -1,5 +1,6 @@
 package edu.upenn.cis350.hwk2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,21 +25,31 @@ public class GameView extends View {
         super(c, a);
     }
     public void onDraw(Canvas canvas){
-        Log.v("Here","mine");
+        int boardSize =  GameActivity.boardSize;
         Bitmap img = BitmapFactory.decodeResource(getResources(),
                 R.drawable.dot);
-        canvas.drawBitmap(img,30,30,null);
-        /*int width = canvas.getWidth();
+        int width = canvas.getWidth();
         int height = canvas.getHeight();
-        for (int i = 0; i < width; i++){
-            for (int j = 0; j < height; j++){
+        int widthGap = width/(boardSize);
+        int heightGap = height/(boardSize);
+        int numberOfDotsX = 0;
+        int numberOfDotsY = 0;
+        for (int i = boardSize +100; i < width && numberOfDotsX<= boardSize; i+=widthGap){
+            for (int j = boardSize +100; j < height && numberOfDotsY <= boardSize; j+=heightGap){
                 canvas.drawBitmap(img, i, j, null);
+                Point[][] board = new Point[boardSize][boardSize];
+                board[numberOfDotsX][numberOfDotsY] =new Point(i, j);
+                numberOfDotsX++;
             }
+            numberOfDotsY++;
+            numberOfDotsX=0;
         }
+        /*
         Paint p = new Paint();
         p.setColor(Color.RED);
         p.setStrokeWidth(10);
-        canvas.drawLine(40, 20, 60, 50, p);*/
+        canvas.drawLine(40, 20, 60, 50, p);
+        */
     }
     public void onTouchEvent(View view){
         //®Log.v("Here","two");

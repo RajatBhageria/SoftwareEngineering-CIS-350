@@ -3,7 +3,9 @@ package edu.upenn.cis350.hwk2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initSpinner();
-
     }
     public void onQuitButtonClick(){
 
@@ -28,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void initSpinner() {
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-        String boardSize = mySpinner.getSelectedItem().toString();
+        //boardSize = mySpinner.getSelectedItem().toString();
+        //Log.v("Size",boardSize);
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                boardSize = (String) parent.getItemAtPosition(pos);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 }
