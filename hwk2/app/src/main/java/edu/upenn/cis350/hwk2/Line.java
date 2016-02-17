@@ -47,11 +47,28 @@ public class Line {
                 Math.abs(getStartY()-getEndY()) <= 10;
     }
 
+    public boolean isVertical(){
+        return Math.abs(getStartX()-getEndX()) <= 10;
+    }
+
+    public boolean isHorizontal(){
+        return Math.abs(getStartY()-getEndY()) <= 10;
+    }
+
     public boolean lineIsRightSize(){
         return Math.abs(getStartX()-getEndX()) <= 10 ||
                 Math.abs(getStartY()-getEndY()) <= 10;
     }
     private float mStartX, mStartY,mEndX, mEndY;
     private boolean isConnected = false;
+
+    public boolean sameAs(Line line){
+        if (line.getStartX() == getStartX() &&
+                line.getEndX() == getEndX() &&
+                line.getStartY() == getStartY() &&
+                line.getEndY() == getEndY())
+        {return true;}
+        return false;
+    }
 
 }

@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.logging.Level;
 
@@ -55,8 +57,8 @@ public class GameView extends View {
         int heightGap = height/(boardSize);
         int numberOfDotsX = 0;
         int numberOfDotsY = 0;
-        for (int i = boardSize +100; i < width && numberOfDotsX<= boardSize; i+=widthGap){
-            for (int j = boardSize +100; j < height && numberOfDotsY <= boardSize; j+=heightGap){
+        for (int i = boardSize; i < width && numberOfDotsX<= boardSize; i+=widthGap){
+            for (int j = boardSize; j < height && numberOfDotsY <= boardSize; j+=heightGap){
                 canvas.drawBitmap(img, i, j, null);
                 board[numberOfDotsX][numberOfDotsY] =new Point(i+10, j+10);
                 numberOfDotsX++;
@@ -69,10 +71,12 @@ public class GameView extends View {
         for (int i = 0; i < lines.size(); i++){
             Line line = lines.get(i);
             if (line.isRed()){
-                canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), redP);
+                canvas.drawLine(line.getStartX(), line.getStartY(),
+                        line.getEndX(), line.getEndY(), redP);
             }
             else{
-                canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), blueP);
+                canvas.drawLine(line.getStartX(), line.getStartY(),
+                        line.getEndX(), line.getEndY(), blueP);
             }
         }
 
@@ -97,44 +101,31 @@ public class GameView extends View {
     private int counter = 0;
 
     private Line currentLine = new Line();
+
     @Override
     public boolean onTouchEvent(MotionEvent event){
         float x = event.getX();
         float y = event.getY();
 
-        //Line line = new Line();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (getCorrectPoint(x,y) != null){
                     Point correctStart = getCorrectPoint(x,y);
-                    //line.setStart(correctStart.getX(), correctStart.getY());
                     currentLine.setStart(correctStart.getX(), correctStart.getY());
                     if (counter % 2 == 0) currentLine.setToRed();
-                    //lines.add(line);
                 }
                 invalidate();
                 break;
+
             case MotionEvent.ACTION_MOVE:
-                /*if (lines.size() > 0){
-                    //line = lines.get(lines.size()-1);
-                    if (!currentLine.isConnected()){
-                        currentLine.setEnd(x, y);
-                        if (currentLine.isRed()){
-                            mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), redP);
-                        } else{
-                            mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), blueP);
-                        }
-                    }
-                    else{
-                        break;
-                    }
-                }*/
                 if (!currentLine.isConnected()){
                     currentLine.setEnd(x, y);
                     if (currentLine.isRed()){
-                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), redP);
+                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(),
+                                currentLine.getEndX(), currentLine.getEndY(), redP);
                     } else{
-                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), blueP);
+                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(),
+                                currentLine.getEndX(), currentLine.getEndY(), blueP);
                     }
                 }
                 else{
@@ -142,24 +133,20 @@ public class GameView extends View {
                 }
                 invalidate();
                 break;
+
             case MotionEvent.ACTION_UP:
-                //line = lines.get(lines.size()-1);
-               /* if (point != null && currentLine.lineIsHorizontalOrVertical()){
-                    Point correctEnd = getCorrectPoint(x,y);
-                    currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
-                    currentLine.setToConnected();
-                    lines.add(currentLine);
-                    counter++;
-                }
-                else{
-                    lines.remove(lines.size() - 1);
-                }*/
                 Point correctEnd = getCorrectPoint(x, y);
                 if (correctEnd != null){
                     currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
-                    currentLine.setToConnected();
                     if (currentLine.lineIsHorizontalOrVertical()) {
+                        for (int i = 0; i < lines.size(); i++){
+                            if (lines.get(i).sameAs(currentLine)){
+                                currentLine = new Line();
+                                break;
+                            }
+                        }
                         lines.add(currentLine);
+                        currentLine.setToConnected();
                         counter++;
                     }
                 }
@@ -173,4 +160,28 @@ public class GameView extends View {
         return true;
 
     }
+
+    private ArrayList<Box> boxes = new ArrayList<Box>();
+
+   /* private void addLineToBox(Line line){
+        if (line.isHorizontal()){
+            for (int i = 0; i < boxes.size(); i++){
+                if (boxes.get(i).containsSide(line)){
+
+                }
+
+                if (boxes.get(i).getTop())
+                else{
+
+                }
+                Line boxTop = boxes.get(i).getTop();
+                Line boxBottom = boxes.get(i).getBottom();
+                if ()
+            }
+        }
+        else{
+
+        }
+    }*/
+
 }
