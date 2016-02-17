@@ -20,4 +20,16 @@ public class Point {
     public String toString(){
         return ("X Coord: " + mXCoord + ", Y Coord: " + mYCoord);
     }
+    private int xGridLocation, yGridLocation = 0;
+    public void setGridLocation(int x, int y){
+        xGridLocation = x;
+        yGridLocation = y;
+    }
+
+    public int getXGridLocation(){
+        return xGridLocation;
+    }
+    public int getYGridLocation(){
+        return yGridLocation;
+    }
 }

@@ -42,6 +42,19 @@ public class Line {
     public boolean isConnected(){
         return isConnected;
     }
+    private Point startPoint, endPoint = null;
+    public void setStartPoint(Point p){
+        startPoint = p;
+    }
+    public void setEndPoint(Point p){
+        endPoint = p;
+    }
+    public Point getStartPoint(){
+        return startPoint;
+    }
+    public Point getEndPoint(){
+        return endPoint;
+    }
     public boolean lineIsHorizontalOrVertical(){
         return Math.abs(getStartX()-getEndX()) <= 10 ||
                 Math.abs(getStartY()-getEndY()) <= 10;
