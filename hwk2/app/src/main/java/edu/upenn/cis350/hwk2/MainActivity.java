@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void initSpinner() {
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-        //boardSize = mySpinner.getSelectedItem().toString();
-        //Log.v("Size",boardSize);
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 boardSize = (String) parent.getItemAtPosition(pos);

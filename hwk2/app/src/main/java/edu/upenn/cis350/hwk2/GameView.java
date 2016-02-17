@@ -1,6 +1,4 @@
 package edu.upenn.cis350.hwk2;
-
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,7 +18,6 @@ public class GameView extends View {
     public GameView (Context c) {
         super(c);
         mContext = c;
-
     }
     boolean[][] verticalLines;
     boolean[][] horizontalLines;
@@ -145,8 +142,8 @@ public class GameView extends View {
                 break;
 
             case MotionEvent.ACTION_UP:
+                int tempNumberOfComplete = numberOfComplete;
                 Point correctEnd = getCorrectPoint(x, y);
-                //System.out.println("end: " + correctEnd.getXGridLocation()+" : " +correctEnd.getYGridLocation());
                 if (correctEnd != null){
                     currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
                     currentLine.setEndPoint(correctEnd);
@@ -161,6 +158,15 @@ public class GameView extends View {
                         currentLine.setToConnected();
                         addLineToBox(currentLine);
                         testIfSquaresDone();
+                        if (numberOfComplete > tempNumberOfComplete ){
+                            Line lastLine = lines.get(lines.size()-1);
+                            if (lastLine.isRed()){
+                                redWins++;
+                            }
+                            else{
+                                blueWins++;
+                            }
+                        }
                         counter++;
                     }
                 }
@@ -192,8 +198,6 @@ public class GameView extends View {
             int yValue = Math.min(line.getStartPoint().getXGridLocation(),
                     line.getEndPoint().getXGridLocation());
             verticalLines[xValue][yValue] = true;
-            System.out.println("Vertical: " + xValue + "," + yValue);
-
         }
     }
 
@@ -208,36 +212,32 @@ public class GameView extends View {
 
     public void testIfSquaresDone() {
         int tempComplete = 0;
-        int tempRedWins = 0;
-        int tempBlueWins = 0;
         for (int i = 0; i < horizontalLines.length; i++) {
             for (int j = 0; j < verticalLines.length; j++) {
                 if (isSquareComplete(i,j)){
                     tempComplete++;
-                    if (lines.get(lines.size()-1).isRed()){
-                        tempRedWins++;
-                    }
-                    else if (!lines.get(lines.size()-1).isRed()){
-                        tempBlueWins++;
-                    }
                 }
             }
         }
         if (tempComplete> numberOfComplete) numberOfComplete = tempComplete;
-        if (tempRedWins > redWins) redWins = tempRedWins;
-        if (tempBlueWins > blueWins) blueWins = tempBlueWins;
     }
 
     public void isFinished(){
         if (numberOfComplete == Math.pow(boardS-1,2)){
-            Toast toast = Toast.makeText(mContext, "Just won the game!", Toast.LENGTH_LONG);
+            String response;
+            if (redWins > blueWins){
+                response = "Red Wins " + redWins+" to " + blueWins;
+            }
+            else{
+                response = "Blue Wins " + blueWins + " to " + redWins;
+            }
+            Toast toast = Toast.makeText(mContext, response, Toast.LENGTH_LONG);
             System.out.println("Done!!!");
             toast.show();
             System.out.println("Number complete: " + numberOfComplete);
             System.out.println("Red wins: " + redWins);
             System.out.println("Blue wins: " + blueWins);
         }
-
     }
 
     public void clearEverything(){
@@ -250,27 +250,8 @@ public class GameView extends View {
         lines.clear();
     }
 
-    public void removeLastLine(){
-        Line line = lines.get(lines.size()-1);
-        if (line.isHorizontal()){
-            int yValue = Math.min(line.getStartPoint().getXGridLocation(),
-                    line.getEndPoint().getXGridLocation());
-            int xValue = Math.min(line.getStartPoint().getYGridLocation(),
-                    line.getEndPoint().getYGridLocation());
-            horizontalLines[xValue][yValue] = false;
-
-
-        }
-        else if (line.isVertical()){
-            int xValue = Math.min(line.getStartPoint().getYGridLocation(),
-                    line.getEndPoint().getYGridLocation());
-            int yValue = Math.min(line.getStartPoint().getXGridLocation(),
-                    line.getEndPoint().getXGridLocation());
-            verticalLines[xValue][yValue] = false;
-
-        }
+    public void removeLastLine() {
+        Line line = lines.get(lines.size() - 1);
         lines.remove(line);
     }
-
-
 }

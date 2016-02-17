@@ -49,7 +49,8 @@ public class GameActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                       // ((GameView) v).removeLastLine();
+                        //View view = (GameView) v.getParent();
+                        //view.removeLastLine();
                     }
                 });
                 return true;
