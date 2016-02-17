@@ -1,25 +1,16 @@
 package edu.upenn.cis350.hwk2;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.logging.Level;
 
 /**
  * Created by RajatBhageria on 2/13/16.
@@ -30,8 +21,8 @@ public class GameView extends View {
         mContext = c;
 
     }
-    Line[][] verticalLines;
-    Line[][] horizontalLines;
+    boolean[][] verticalLines;
+    boolean[][] horizontalLines;
     public GameView(Context c, AttributeSet a) {
         super(c, a);
         redP.setStrokeWidth(10);
@@ -46,13 +37,13 @@ public class GameView extends View {
         blueP.setStrokeCap(Paint.Cap.ROUND);
         blueP.setColor(Color.rgb(30, 144, 255));
 
-        verticalLines = new Line[7][7];
-        horizontalLines = new Line[7][7];
+        verticalLines = new boolean[7][7];
+        horizontalLines = new boolean[7][7];
 
         for (int i = 0; i < verticalLines.length; i ++){
             for (int j = 0; j < verticalLines[0].length; j++){
-                verticalLines[i][j] = null;
-                horizontalLines[i][j] = null;
+                verticalLines[i][j] = false;
+                horizontalLines[i][j] = false;
             }
         }
     }
@@ -127,7 +118,6 @@ public class GameView extends View {
             case MotionEvent.ACTION_DOWN:
                 if (getCorrectPoint(x,y) != null){
                     Point correctStart = getCorrectPoint(x,y);
-                    System.out.println("begin: " + correctStart.getXGridLocation()+" : " +correctStart.getYGridLocation());
                     currentLine.setStart(correctStart.getX(), correctStart.getY());
                     currentLine.setStartPoint(getCorrectPoint(x,y));
                     if (counter % 2 == 0) currentLine.setToRed();
@@ -154,17 +144,17 @@ public class GameView extends View {
 
             case MotionEvent.ACTION_UP:
                 Point correctEnd = getCorrectPoint(x, y);
-                System.out.println("end: " + correctEnd.getXGridLocation()+" : " +correctEnd.getYGridLocation());
+                //System.out.println("end: " + correctEnd.getXGridLocation()+" : " +correctEnd.getYGridLocation());
                 if (correctEnd != null){
                     currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
                     currentLine.setEndPoint(correctEnd);
                     if (currentLine.lineIsHorizontalOrVertical()) {
-                        for (int i = 0; i < lines.size(); i++){
+                  /*      for (int i = 0; i < lines.size(); i++){
                             if (lines.get(i).sameAs(currentLine)){
                                 currentLine = new Line();
                                 break;
                             }
-                        }
+                        }*/
                         lines.add(currentLine);
                         currentLine.setToConnected();
                         addLineToBox(currentLine);
@@ -187,8 +177,9 @@ public class GameView extends View {
         if (line.isHorizontal()){
             int yValue = Math.min(line.getStartPoint().getXGridLocation(),
                     line.getEndPoint().getXGridLocation());
-            int xValue = line.getStartPoint().getYGridLocation();
-            horizontalLines[xValue][yValue] = line;
+            int xValue = Math.min(line.getStartPoint().getYGridLocation(),
+                    line.getEndPoint().getYGridLocation());
+            horizontalLines[xValue][yValue] = true;
             System.out.println("Horizontal: " + xValue + "," + yValue);
 
 
@@ -196,16 +187,17 @@ public class GameView extends View {
         else if (line.isVertical()){
             int xValue = Math.min(line.getStartPoint().getYGridLocation(),
                     line.getEndPoint().getYGridLocation());
-            int yValue = line.getStartPoint().getXGridLocation();
-            verticalLines[xValue][yValue] = line;
+            int yValue = Math.min(line.getStartPoint().getXGridLocation(),
+                    line.getEndPoint().getXGridLocation());
+            verticalLines[xValue][yValue] = true;
             System.out.println("Vertical: " + xValue + "," + yValue);
 
         }
     }
 
     public boolean isSquareComplete(int x, int y) {
-        return (horizontalLines[x][y]!= null && horizontalLines[x][y+1]!= null
-                && verticalLines[x][y] != null && verticalLines[x+1][y]!= null );
+        return (horizontalLines[x][y] && horizontalLines[x][y+1]
+                && verticalLines[x][y]  && verticalLines[x+1][y] );
     }
 
     private int numberOfComplete = 0;
@@ -220,10 +212,8 @@ public class GameView extends View {
             }
         }
         if (tempComplete> numberOfComplete) numberOfComplete = tempComplete;
-
         if (numberOfComplete == Math.pow(boardS-1,2)){
             Toast.makeText(mContext, "Just won the game! ", Toast.LENGTH_LONG);
-
         }
         System.out.println("Number complete: " + numberOfComplete);
     }
