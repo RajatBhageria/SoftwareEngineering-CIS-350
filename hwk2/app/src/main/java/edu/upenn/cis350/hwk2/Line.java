@@ -7,9 +7,12 @@ public class Line {
     public Line(){
 
     }
-    public Line(float startX, float startY){
-        mStartX = startX;
-        mStartY = startY;
+    private boolean isRed = false;
+    public boolean isRed(){
+        return isRed;
+    }
+    public void setToRed(){
+        isRed = true;
     }
     public void setStart(float startX, float startY){
         mStartX = startX;
@@ -23,10 +26,7 @@ public class Line {
     public float getStartX(){
         return mStartX;
     }
-    public Line getLine(float startX, float startY){
-        if (mStartX == startX && mStartY == startY) return this;
-        return new Line();
-    }
+
     public float getStartY(){
         return mStartY;
     }
@@ -36,7 +36,22 @@ public class Line {
     public float getEndY(){
         return mEndY;
     }
+    public void setToConnected(){
+        isConnected = true;
+    }
+    public boolean isConnected(){
+        return isConnected;
+    }
+    public boolean lineIsHorizontalOrVertical(){
+        return Math.abs(getStartX()-getEndX()) <= 10 ||
+                Math.abs(getStartY()-getEndY()) <= 10;
+    }
 
+    public boolean lineIsRightSize(){
+        return Math.abs(getStartX()-getEndX()) <= 10 ||
+                Math.abs(getStartY()-getEndY()) <= 10;
+    }
     private float mStartX, mStartY,mEndX, mEndY;
+    private boolean isConnected = false;
 
 }

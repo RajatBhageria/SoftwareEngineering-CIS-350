@@ -28,15 +28,23 @@ public class GameView extends View {
     }
     public GameView(Context c, AttributeSet a) {
         super(c, a);
-        p.setAntiAlias(true);
-        p.setStrokeWidth(10);
-        p.setStyle(Paint.Style.STROKE);
-        p.setStrokeJoin(Paint.Join.ROUND);
-        p.setStrokeCap(Paint.Cap.ROUND);
+        redP.setStrokeWidth(10);
+        redP.setStyle(Paint.Style.STROKE);
+        redP.setStrokeJoin(Paint.Join.ROUND);
+        redP.setStrokeCap(Paint.Cap.ROUND);
+        redP.setColor(Color.rgb(255,0,0));
+
+        blueP.setStrokeWidth(10);
+        blueP.setStyle(Paint.Style.STROKE);
+        blueP.setStrokeJoin(Paint.Join.ROUND);
+        blueP.setStrokeCap(Paint.Cap.ROUND);
+        blueP.setColor(Color.rgb(30,144,255));
+
     }
 
     private Point[][] board;
     private ArrayList<Line> lines = new ArrayList<Line>();
+
     public void onDraw(Canvas canvas){
         int boardSize =  GameActivity.boardSize;
         board = new Point[boardSize][boardSize];
@@ -51,7 +59,6 @@ public class GameView extends View {
             for (int j = boardSize +100; j < height && numberOfDotsY <= boardSize; j+=heightGap){
                 canvas.drawBitmap(img, i, j, null);
                 board[numberOfDotsX][numberOfDotsY] =new Point(i+10, j+10);
-                //System.out.println(i + " , "+ j);
                 numberOfDotsX++;
             }
             numberOfDotsY++;
@@ -61,22 +68,19 @@ public class GameView extends View {
         mCanvas = canvas;
         for (int i = 0; i < lines.size(); i++){
             Line line = lines.get(i);
-            canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), p);
-
-        }
-
-    }
-    private void soutBoard(){
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.println(board[i][j]);
+            if (line.isRed()){
+                canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), redP);
+            }
+            else{
+                canvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), blueP);
             }
         }
 
     }
     private Canvas mCanvas = null;
-    private Paint p = new Paint();
-    private Path path = new Path();
+
+    private Paint redP = new Paint();
+    private Paint blueP = new Paint();
 
     private Point getCorrectPoint(float x, float y){
         for (int i = 0; i < board.length; i++) {
@@ -90,40 +94,77 @@ public class GameView extends View {
         }
         return null;
     }
+    private int counter = 0;
 
+    private Line currentLine = new Line();
     @Override
     public boolean onTouchEvent(MotionEvent event){
         float x = event.getX();
         float y = event.getY();
 
-        Line line = new Line();
+        //Line line = new Line();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (getCorrectPoint(x,y) != null){
                     Point correctStart = getCorrectPoint(x,y);
-                    line.setStart(correctStart.getX(), correctStart.getY());
-                    lines.add(line);
+                    //line.setStart(correctStart.getX(), correctStart.getY());
+                    currentLine.setStart(correctStart.getX(), correctStart.getY());
+                    if (counter % 2 == 0) currentLine.setToRed();
+                    //lines.add(line);
                 }
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (lines.size() > 0){
-                    line = lines.get(lines.size()-1);
-                    line.setEnd(x, y);
-                    mCanvas.drawLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY(), p);
+                /*if (lines.size() > 0){
+                    //line = lines.get(lines.size()-1);
+                    if (!currentLine.isConnected()){
+                        currentLine.setEnd(x, y);
+                        if (currentLine.isRed()){
+                            mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), redP);
+                        } else{
+                            mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), blueP);
+                        }
+                    }
+                    else{
+                        break;
+                    }
+                }*/
+                if (!currentLine.isConnected()){
+                    currentLine.setEnd(x, y);
+                    if (currentLine.isRed()){
+                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), redP);
+                    } else{
+                        mCanvas.drawLine(currentLine.getStartX(), currentLine.getStartY(), currentLine.getEndX(), currentLine.getEndY(), blueP);
+                    }
+                }
+                else{
+                    break;
                 }
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                if (getCorrectPoint(x, y) != null){
+                //line = lines.get(lines.size()-1);
+               /* if (point != null && currentLine.lineIsHorizontalOrVertical()){
                     Point correctEnd = getCorrectPoint(x,y);
-                    line = lines.get(lines.size()-1);
-                    line.setEnd(correctEnd.getX(), correctEnd.getY());
-                    lines.add(line);
+                    currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
+                    currentLine.setToConnected();
+                    lines.add(currentLine);
+                    counter++;
                 }
                 else{
-                    lines.remove(lines.size()-1);
+                    lines.remove(lines.size() - 1);
+                }*/
+                Point correctEnd = getCorrectPoint(x, y);
+                if (correctEnd != null){
+                    currentLine.setEnd(correctEnd.getX(), correctEnd.getY());
+                    currentLine.setToConnected();
+                    if (currentLine.lineIsHorizontalOrVertical()) {
+                        lines.add(currentLine);
+                        counter++;
+                    }
                 }
+                currentLine = new Line();
+
                 invalidate();
                 break;
             default:
@@ -131,23 +172,5 @@ public class GameView extends View {
         }
         return true;
 
-
-        /*
-       switch (event.getAction()) {
-
-            case MotionEvent.ACTION_DOWN:
-               *//* for (int i = 0; i < board.length; i++){
-                    for (int j = 0; j < board[i].length; j++){
-                        if (board[i][j].isCorrectPoint(x,y)){
-                            startingPoint = board[i][j];
-                            mCanvas.drawLine(startingPoint.getX(), startingPoint.getY(), 60, 50, mPaint);
-
-                        }
-                    }
-                }*//*
-                invalidate();
-                break;
-
-        }*/
     }
 }
