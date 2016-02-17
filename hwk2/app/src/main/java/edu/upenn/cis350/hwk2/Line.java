@@ -68,10 +68,7 @@ public class Line {
         return Math.abs(getStartY()-getEndY()) <= 10;
     }
 
-    public boolean lineIsRightSize(){
-        return Math.abs(getStartX()-getEndX()) <= 10 ||
-                Math.abs(getStartY()-getEndY()) <= 10;
-    }
+
     private float mStartX, mStartY,mEndX, mEndY;
     private boolean isConnected = false;
 
@@ -83,5 +80,6 @@ public class Line {
         {return true;}
         return false;
     }
+
 
 }
