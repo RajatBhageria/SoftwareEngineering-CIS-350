@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  * Created by RajatBhageria on 3/28/16.
  */
 public class inputReader {
-    private Logger logger = FileLogger.getInstance();
+    private FileLogger logger = FileLogger.getInstance();
     public inputReader(String input){
         /*
         while (!input.equalsIgnoreCase("q")){

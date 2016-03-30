@@ -1,8 +1,10 @@
 package edu.upenn.cis350.hwk4.controller;
 
+import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,13 +16,13 @@ import java.util.logging.Logger;
 /**
  * Created by RajatBhageria on 3/28/16.
  */
-public class JSONReader {
+public class JSONReader implements fileTypeReader {
     private String fileName;
-    public JSONReader(String name){
-        fileName = "src/edu/upenn/cis350/hwk1/" + name;
+    public JSONReader(){
+        fileName = "src/edu/upenn/cis350/hwk4/" + Main.fileName;
         ArrayList<String> array = new ArrayList<String>();
-        FileLogger.setupLogger(fileName);
-        Logger logger = FileLogger.getInstance();
+        //FileLogger.setupLogger(fileName);
+        FileLogger logger = FileLogger.getInstance();
         try {
 
             File file = new File(fileName);
@@ -42,21 +44,26 @@ public class JSONReader {
                 bufferReader.close();
             }
             else if (!file.canRead()){
-                logger.log(Level.ALL,"Sorry file cannot be read");
+                logger.info("Sorry file cannot be read");
                 System.exit(0);
             }
             else if (!file.isHidden()){
-                logger.log(Level.ALL,"Sorry file is hidden");
+                logger.info("Sorry file is hidden");
                 System.exit(0);
             }
         }catch(Exception e){
-            logger.log(Level.FINE,"Error while reading file line by line:" + e.getMessage());
+            logger.info("Error while reading file line by line:" + e.getMessage());
         }
     }
     public ArrayList<String> read(){
 
         JSONParser parser = new JSONParser();
-        JSONObject obj = (JSONObject)parser.parse(s);
+        JSONObject obj = null;
+        try {
+            obj = (JSONObject)parser.parse("hello");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         //String product = (String)obj.get(“product”); // use key as argument Double price = (Double)obj.get(“price”);
         String course = (String) obj.get("course");
         String instructor = (String) obj.get("instructor");

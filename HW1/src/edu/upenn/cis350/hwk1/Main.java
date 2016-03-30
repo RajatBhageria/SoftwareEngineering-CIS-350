@@ -26,10 +26,12 @@ public class Main {
         String logName = (String) args[1];
         ArrayList<String> list = Main.Reader(fileName);
 
-        Parse parser = new Parse(list);
-        Logger logger = Main.Logger(logName);
 
-        Scanner scan = new Scanner (System.in);
+
+        Parse parser = new Parse(list);
+
+        Scanner scan = new         Logger logger = Main.Logger(logName);
+        Scanner (System.in);
 
         Main.MainMenu();
 
