@@ -1,4 +1,4 @@
-package edu.upenn.cis350.hwk4.controller;
+package edu.upenn.cis350.hwk4.datamanagement;
 
 import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
@@ -10,13 +10,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by RajatBhageria on 3/28/16.
  */
-public class JSONReader implements fileTypeReader {
+public class JSONReader implements FileTypeReader {
     private String fileName;
     public JSONReader(){
         fileName = "src/edu/upenn/cis350/hwk4/" + Main.fileName;

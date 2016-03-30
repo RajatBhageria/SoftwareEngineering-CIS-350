@@ -1,4 +1,4 @@
-package edu.upenn.cis350.hwk4.data;
+package edu.upenn.cis350.hwk4.controller;
 
 /**
  * Created by RajatBhageria on 3/28/16.

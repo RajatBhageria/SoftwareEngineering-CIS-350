@@ -11,7 +11,7 @@ import java.util.logging.SimpleFormatter;
 /**
  * Created by RajatBhageria on 3/28/16.
  */
-public class FileLogger {
+public class FileLogger extends edu.upenn.cis350.hwk4.logging.Logger {
     protected static FileLogger instance = null;
     private static String logFileName = "src/edu/upenn/cis350/hwk4/" + Main.logName;
 
@@ -38,6 +38,7 @@ public class FileLogger {
     }
     protected final static Logger log = Logger.getLogger("name");
 
+    @Override
     public void info(String msg) {
         log.info(msg);
 

@@ -1,17 +1,13 @@
 package edu.upenn.cis350.hwk4;
 
-import edu.upenn.cis350.hwk4.controller.ReaderFactory;
-import edu.upenn.cis350.hwk4.controller.fileTypeReader;
+import edu.upenn.cis350.hwk4.datamanagement.ReaderFactory;
+import edu.upenn.cis350.hwk4.datamanagement.FileTypeReader;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
+import edu.upenn.cis350.hwk4.logging.ScreenLogger;
+import edu.upenn.cis350.hwk4.logging.Subject;
 import edu.upenn.cis350.hwk4.ui.MainMenu;
-import jdk.nashorn.internal.parser.JSONParser;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class Main {
 
@@ -22,6 +18,8 @@ public class Main {
     public static String typeOfFile ="";
     public static String fileName ="";
     public static String logName = "";
+
+    public static Subject subject = new Subject();
 
     public static void main(String[] args) {
 	// write your code here
@@ -37,12 +35,19 @@ public class Main {
         logName = (String) args[2];
         //ArrayList<String> list = Main.Reader(fileName);
 
-        fileTypeReader reader = ReaderFactory.getReader();
+        FileTypeReader reader = ReaderFactory.getReader();
         reader.read();
 
+
+        FileLogger fileLogger= FileLogger.getInstance();
+        ScreenLogger screenLogger = ScreenLogger.getInstance();
+        subject.add(fileLogger);
+        subject.add(screenLogger);
+
+        subject.setState("YOOOO");
+
         //Log.setupLogger(logName);
-        FileLogger log = FileLogger.getInstance();
-        log.info("wassup homies!!!");
+        //log.info("wassup homies!!!");
 
 
         MainMenu.createMenu();

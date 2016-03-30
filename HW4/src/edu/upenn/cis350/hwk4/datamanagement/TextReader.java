@@ -1,4 +1,4 @@
-package edu.upenn.cis350.hwk4.controller;
+package edu.upenn.cis350.hwk4.datamanagement;
 
 import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
@@ -7,12 +7,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * Created by RajatBhageria on 3/29/16.
  */
-public class TextReader implements fileTypeReader{
+public class TextReader implements FileTypeReader {
     public  ArrayList<String> read() {
         // The name of the file to open.
         String fileName = "src/edu/upenn/cis350/hwk4/" + Main.fileName;
@@ -39,14 +38,14 @@ public class TextReader implements fileTypeReader{
                 //Close the buffer reader
                 bufferReader.close();
             } else if (!file.canRead()) {
-                logger.info( "Sorry file cannot be read");
+                logger.info("Sorry file cannot be read");
                 System.exit(0);
             } else if (!file.isHidden()) {
-                logger.info( "Sorry file is hidden");
+                logger.info("Sorry file is hidden");
                 System.exit(0);
             }
         } catch (Exception e) {
-            logger.info( "Error while reading file line by line:" + e.getMessage());
+            logger.info("Error while reading file line by line:" + e.getMessage());
         }
 
         return array;

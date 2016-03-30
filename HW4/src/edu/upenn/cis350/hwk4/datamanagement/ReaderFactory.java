@@ -1,4 +1,4 @@
-package edu.upenn.cis350.hwk4.controller;
+package edu.upenn.cis350.hwk4.datamanagement;
 
 import edu.upenn.cis350.hwk4.Main;
 
@@ -7,7 +7,7 @@ import edu.upenn.cis350.hwk4.Main;
  */
 public class ReaderFactory {
 
-    public static fileTypeReader getReader(){
+    public static FileTypeReader getReader(){
         if (Main.typeOfFile.equalsIgnoreCase("TEXT")) {
             return new TextReader();
         } else if (Main.typeOfFile.equalsIgnoreCase("JSON")){

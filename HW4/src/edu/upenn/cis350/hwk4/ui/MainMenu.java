@@ -1,5 +1,6 @@
 package edu.upenn.cis350.hwk4.ui;
 
+import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
 import edu.upenn.cis350.hwk4.logging.ScreenLogger;
 
@@ -16,11 +17,14 @@ public class MainMenu {
                 "Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)\n" +
                 "Find all courses at or above a specified quality rating across all offerings (Press 6)\n" +
                 "Quit the program (Press Q)");
-        FileLogger fileLogger = FileLogger.getInstance();
-        ScreenLogger screenLogger = ScreenLogger.getInstance();
-        fileLogger.info(options);
-        screenLogger.println(options);
-        fileLogger.info(allOptions);
-        screenLogger.println(allOptions);
+        Main.subject.setState(options);
+        Main.subject.setState(allOptions);
+
+        //FileLogger fileLogger = FileLogger.getInstance();
+        //ScreenLogger screenLogger = ScreenLogger.getInstance();
+        //fileLogger.info(options);
+        //screenLogger.println(options);
+        //fileLogger.info(allOptions);
+        //screenLogger.println(allOptions);
     }
 }
