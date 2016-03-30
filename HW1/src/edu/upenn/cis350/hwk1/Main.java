@@ -166,7 +166,7 @@ public class Main {
 
     /*
     A method that sets up the main menu that tells the user all the options he/she has.
-     */
+    */
     public static void MainMenu(){
         String options = ("Here are your options:");
         String allOptions = ("Find all courses taught by a specified instructor (Press 4)\n" +
