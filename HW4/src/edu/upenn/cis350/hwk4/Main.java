@@ -10,6 +10,7 @@ import edu.upenn.cis350.hwk4.datamanagement.FileTypeReader;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
 import edu.upenn.cis350.hwk4.logging.ScreenLogger;
 import edu.upenn.cis350.hwk4.logging.Subject;
+import edu.upenn.cis350.hwk4.ui.InputReader;
 import edu.upenn.cis350.hwk4.ui.MainMenu;
 import java.util.ArrayList;
 
@@ -43,19 +44,7 @@ public class Main {
         subject.add(fileLogger);
         subject.add(screenLogger);
 
-        Context context = new Context (new CoursesAboveQualityRating(finalData, 2.0));
-        context.executeStrategy();
-
-        Context context2 = new Context (new LowestDifficultyRatio(finalData));
-        context.executeStrategy();
-
-        Context context3 = new Context (new CoursesByInstructor("Instructor",finalData));
-        context.executeStrategy();
-
-        MainMenu.createMenu();
-        for (String e: list ){
-            System.out.println(e);
-        }
+        InputReader input = new InputReader(finalData);
     }
 
 }

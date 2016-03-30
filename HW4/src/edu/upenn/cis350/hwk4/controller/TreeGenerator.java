@@ -11,8 +11,9 @@ import java.util.*;
  */
 public class TreeGenerator {
 
-    public TreeGenerator(ArrayList<String[]> pData){
-        pData = data;
+    public TreeGenerator(ArrayList<String[]> pData)
+    {
+        data = pData;
     }
 
     /*

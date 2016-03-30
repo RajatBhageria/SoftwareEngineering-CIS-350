@@ -1,26 +1,40 @@
 package edu.upenn.cis350.hwk4.ui;
 
-import edu.upenn.cis350.hwk4.logging.FileLogger;
+import edu.upenn.cis350.hwk4.Main;
+import edu.upenn.cis350.hwk4.controller.Context;
+import edu.upenn.cis350.hwk4.controller.CoursesAboveQualityRating;
+import edu.upenn.cis350.hwk4.controller.CoursesByInstructor;
+import edu.upenn.cis350.hwk4.controller.LowestDifficultyRatio;
+import edu.upenn.cis350.hwk4.logging.Subject;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 /**
  * Created by RajatBhageria on 3/28/16.
  */
-public class inputReader {
-    private FileLogger logger = FileLogger.getInstance();
-    public inputReader(String input){
-        /*
+public class InputReader {
+    private Subject subject = Main.subject;
+    public InputReader(ArrayList<String[]> finalData){
+
+        MainMenu.createMenu();
+
+        Scanner scan = new Scanner (System.in);
+        String input = scan.nextLine();
+
         while (!input.equalsIgnoreCase("q")){
             if (input.equals("4")){
-                logger.info("Please enter the name of the instructor whose courses you want to see");
+                subject.setState("Please enter the name of the instructor whose courses you want to see");
                 String instructor = scan.nextLine();
-                logger.info("The instructor you searched for is: " + instructor);
-                ArrayList<String> answer = parser.coursesByInstructor(instructor);
+                subject.setState("The instructor you searched for is: " + instructor);
+                Context context = new Context (new CoursesByInstructor(instructor,finalData));
+
+                ArrayList<String> answer = context.executeStrategy();
+
                 if (answer.isEmpty()){
-                    //System.out.println("Sorry no instructor or courses found");
-                    logger.log(Level.INFO,"Sorry no instructor or courses found");
+                    subject.setState("Sorry no instructor or courses found");
                 }
                 else{
                     String output = "";
@@ -28,48 +42,38 @@ public class inputReader {
                         output += e + ", ";
                     }
                     output = output.substring(0,output.length()-2);
-                    logger.log(Level.INFO, output);
-                    //System.out.println(output);
+                    subject.setState( output);
                 }
-
 
             } else if (input.equals("5")){
-                logger.log(Level.INFO,"The Five Easiest Courses (Organzied by Quality:Difficulty Ratio Are : ");
-                TreeMap<Double, String> map = parser.lowestDifficultyRatio();
-                for (int i =0; i < 5; i++){
-                    Double rating =(Double) map.keySet().toArray()[i];
-                    String courses = (String) map.values().toArray()[i];
-                    //System.out.println(courses + ": " + rating);
-                    logger.log(Level.INFO, courses + ": " + rating);
+                subject.setState("The Five Easiest Courses (Organzied by Quality:Difficulty Ratio Are : ");
+                Context context2 = new Context (new LowestDifficultyRatio(finalData));
+                ArrayList<String> array = context2.executeStrategy();
+                for (String e: array){
+                    subject.setState(e);
                 }
             } else if (input.equals("6")){
-                logger.info("Please enter the minimum course quality you want");
+                subject.setState("Please enter the minimum course quality you want");
                 Double minQuality = (Double) Double.parseDouble(scan.nextLine());
-                logger.log(Level.INFO,"The courses with a quality rating above " + minQuality + " are:");
-                TreeMap<Double, String> qualityTree = parser.coursesAboveQualityRating();
-                for (int i =0; i < qualityTree.values().size(); i++){
-                    Double quality =(Double) qualityTree.keySet().toArray()[i];
-                    String courses = (String) qualityTree.values().toArray()[i];
-                    //System.out.println(courses);
-                    //System.out.println(quality);
-                    if (quality >= minQuality){
-                        //System.out.println(courses);
-                        logger.log(Level.INFO,courses + ", " + quality);
-                    }
+                subject.setState("The courses with a quality rating above " + minQuality + " are:");
+                Context context3 = new Context (new CoursesAboveQualityRating(finalData, minQuality));
+                ArrayList<String> array = context3.executeStrategy();
+                for (String e: array){
+                    subject.setState(e);
                 }
 
             } else if (input.equalsIgnoreCase("Q")){
-                logger.info("program ended");
+                subject.setState("Program Ended. Thanks for trying :) ");
                 System.exit(1);
             }
             else{
-                logger.info("Please enter either '4,' '5,' '6,' or 'q'");
+                subject.setState("Please enter either '4,' '5,' '6,' or 'q'");
             }
-            MainMenu main = new MainMenu();
+            MainMenu.createMenu();
             input = scan.nextLine();
-            logger.log(Level.INFO, input);
+            subject.setState("Your input was: " + input);
         }
-         */
+
     }
 
 }

@@ -30,9 +30,9 @@ public class Main {
 
         Parse parser = new Parse(list);
 
-        Scanner scan = new         Logger logger = Main.Logger(logName);
-        Scanner (System.in);
+        Scanner scan = new Scanner (System.in);
 
+        Logger logger = Main.Logger(logName);
         Main.MainMenu();
 
         String input = scan.nextLine();

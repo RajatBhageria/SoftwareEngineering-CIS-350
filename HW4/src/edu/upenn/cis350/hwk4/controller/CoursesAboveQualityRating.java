@@ -1,5 +1,6 @@
 package edu.upenn.cis350.hwk4.controller;
 
+import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.Subject;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class CoursesAboveQualityRating implements Strategy {
         minQuality = pMinQuality;
         TreeGenerator pTreeGenerator = new TreeGenerator(data);
         treeGenerator = pTreeGenerator;
+        treeGenerator.treeGenerator();
+
     }
     /*
     A method that uses treeGenerator() to generate a tree mapping the total course quality to the course name
@@ -31,7 +34,7 @@ public class CoursesAboveQualityRating implements Strategy {
             String courses = (String) qualityTree.values().toArray()[i];
             if (quality >= minQuality){
                 array.add(courses + ": " + quality);
-                subject.setState(courses + ": " + quality);
+                //Main.subject.setState(courses + ": " + quality);
             }
         }
         return array;

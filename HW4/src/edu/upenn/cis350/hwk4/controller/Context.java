@@ -1,5 +1,7 @@
 package edu.upenn.cis350.hwk4.controller;
 
+import java.util.ArrayList;
+
 /**
  * Created by RajatBhageria on 3/30/16.
  */
@@ -9,7 +11,7 @@ public class Context {
         this.strategy = strategy;
 
     }
-    public void executeStrategy(){
-        strategy.getAnswer();
+    public ArrayList<String> executeStrategy(){
+        return strategy.getAnswer();
     }
 }
