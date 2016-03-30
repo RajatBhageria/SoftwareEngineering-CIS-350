@@ -9,8 +9,6 @@ import edu.upenn.cis350.hwk4.logging.Subject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.logging.Logger;
 
 /**
  * Created by RajatBhageria on 3/28/16.
@@ -23,15 +21,15 @@ public class InputReader {
 
         Scanner scan = new Scanner (System.in);
         String input = scan.nextLine();
-
+        subject.setState("You entered: " + input);
         while (!input.equalsIgnoreCase("q")){
             if (input.equals("4")){
                 subject.setState("Please enter the name of the instructor whose courses you want to see");
                 String instructor = scan.nextLine();
                 subject.setState("The instructor you searched for is: " + instructor);
                 Context context = new Context (new CoursesByInstructor(instructor,finalData));
-
                 ArrayList<String> answer = context.executeStrategy();
+
 
                 if (answer.isEmpty()){
                     subject.setState("Sorry no instructor or courses found");
@@ -52,9 +50,16 @@ public class InputReader {
                 for (String e: array){
                     subject.setState(e);
                 }
+
             } else if (input.equals("6")){
                 subject.setState("Please enter the minimum course quality you want");
-                Double minQuality = (Double) Double.parseDouble(scan.nextLine());
+                Double minQuality = 0.0;
+                try{
+                    minQuality= (Double) Double.parseDouble(scan.nextLine());
+                    subject.setState("You entered: " + minQuality);
+                } catch (Exception e){
+                    subject.setState("Please enter a valid double");
+                }
                 subject.setState("The courses with a quality rating above " + minQuality + " are:");
                 Context context3 = new Context (new CoursesAboveQualityRating(finalData, minQuality));
                 ArrayList<String> array = context3.executeStrategy();
@@ -73,6 +78,7 @@ public class InputReader {
             input = scan.nextLine();
             subject.setState("Your input was: " + input);
         }
+        subject.setState("Program Ended. Thanks for trying :) ");
 
     }
 

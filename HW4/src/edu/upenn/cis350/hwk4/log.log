@@ -1,288 +1,30 @@
-Mar 30, 2016 2:52:58 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:33 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: SUPPPP
+Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: The inputs are: JSON ratings.json log.log
+Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Here are your options:
-Mar 30, 2016 2:52:58 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Find all courses taught by a specified instructor (Press 4)
 Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
 Find all courses at or above a specified quality rating across all offerings (Press 6)
 Quit the program (Press Q)
-Mar 30, 2016 2:53:05 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:36 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: You entered: 4
+Mar 30, 2016 6:14:36 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Please enter the name of the instructor whose courses you want to see
-Mar 30, 2016 2:53:07 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: The instructor you searched for is: Gandhi
-Mar 30, 2016 2:53:07 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: The instructor you searched for is: rajiv
+Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: RAJIV GANDHI, CIS-121-001, CIS-160-001, CIS-320-001
-Mar 30, 2016 2:53:07 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Here are your options:
-Mar 30, 2016 2:53:07 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Find all courses taught by a specified instructor (Press 4)
 Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
 Find all courses at or above a specified quality rating across all offerings (Press 6)
 Quit the program (Press Q)
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: 5
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: The Five Easiest Courses (Organzied by Quality:Difficulty Ratio Are : 
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-101-001: 0.49408284023668636
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-559-001: 0.5173501577287066
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-125-401: 0.5907753537375932
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-125-401: 0.5907753537375933
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-196-001: 0.5970608892970987
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Here are your options:
-Mar 30, 2016 2:53:21 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Find all courses taught by a specified instructor (Press 4)
-Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
-Find all courses at or above a specified quality rating across all offerings (Press 6)
-Quit the program (Press Q)
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: 6
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Please enter the minimum course quality you want
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: The courses with a quality rating above 2.0 are:
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-450-401: 2.05
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: TCOM-512-001: 2.100092592592592
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: TCOM-512-001: 2.1000925925925924
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-006: 2.14
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: MEAM-105-001: 2.18
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-434-401: 2.2252380952380952
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-542-001: 2.248203125
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-419-401: 2.25
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-330-001: 2.3061016949152537
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-330-001: 2.306101694915254
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-005: 2.31
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-262-001: 2.3252866242038217
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-121-001: 2.3519014084507046
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-540-001: 2.406461538461538
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-540-001: 2.4064615384615387
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-160-001: 2.4076812749003977
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-160-001: 2.4076812749003986
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-195-001: 2.411307692307692
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-195-001: 2.4113076923076924
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-477-401: 2.412258064516129
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-260-001: 2.486442307692308
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-580-001: 2.4990277777777776
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-573-901: 2.5100000000000002
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-554-001: 2.545234899328859
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-110-001: 2.5616880513231757
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-110-001: 2.561688051323176
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-112-001: 2.573
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-112-001: 2.5730000000000004
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-391-001: 2.593343848580442
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-391-001: 2.5933438485804423
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-482-401: 2.6
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-430-001: 2.6129411764705885
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-553-001: 2.6223255813953488
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-553-001: 2.622325581395349
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-140-401: 2.6358418167580266
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-380-001: 2.6630374753451678
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-482-001: 2.67
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-277-001: 2.67808429118774
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-277-001: 2.6780842911877403
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-196-001: 2.6824637681159422
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-240-001: 2.7031978527607365
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: BIOL-537-401: 2.712686567164179
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-192-001: 2.716047619047619
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-521-001: 2.7383265306122455
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-190-001: 2.75469696969697
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-564-001: 2.769878048780488
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-110-002: 2.779261318506751
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-371-001: 2.7875700934579437
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-371-001: 2.787570093457944
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-120-001: 2.8077173360447385
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-110-910: 2.824272727272727
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-110-910: 2.8242727272727275
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: PSYC-107-920: 2.826923076923077
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-390-401: 2.847414965986394
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-390-401: 2.847414965986395
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-372-101: 2.85
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-563-001: 2.8690410958904113
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-573-001: 2.8860619469026547
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-497-001: 2.931923076923077
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-462-401: 2.93856
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-462-401: 2.9385600000000003
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: TCOM-512-401: 2.942972972972973
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-560-401: 2.9534433962264153
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-537-401: 2.961941747572816
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-537-401: 2.9619417475728165
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-581-001: 2.9641245136186773
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-125-401: 2.9677898550724637
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-350-001: 2.9690625
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-568-001: 2.9714851485148515
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-568-001: 2.971485148514852
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-541-001: 3.0
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-320-001: 3.0076098191214466
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-002: 3.0126923076923076
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-002: 3.012692307692308
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-564-910: 3.02984375
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-410-401: 3.04
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-460-401: 3.05
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-001: 3.0872413793103446
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-191-001: 3.111442622950819
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-191-001: 3.1114426229508196
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-120-002: 3.1199999999999997
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-553-401: 3.125247524752475
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-542-920: 3.1300000000000003
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-193-001: 3.1374999999999997
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-193-001: 3.1375
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-462-401: 3.1398550724637677
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-462-401: 3.139855072463768
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-004: 3.14
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-552-001: 3.1616111111111107
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-559-001: 3.17
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-515-001: 3.172931034482758
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-515-001: 3.1729310344827586
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: PHIL-412-401: 3.1760493827160494
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: MATH-571-401: 3.1799999999999997
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-570-001: 3.2016666666666667
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-568-920: 3.25
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-526-001: 3.26
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-562-001: 3.27
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-573-920: 3.29
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-261-001: 3.294943820224719
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-398-001: 3.2983333333333333
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-341-001: 3.3292500000000005
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-565-001: 3.3431775700934576
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-565-001: 3.343177570093458
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-101-001: 3.38
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-160-910: 3.388490566037736
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-260-910: 3.4153846153846152
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-455-401: 3.441532663316583
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-194-001: 3.4835294117647053
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-194-001: 3.4835294117647058
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-455-001: 3.5
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-534-001: 3.56
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-334-001: 3.680350877192982
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-334-001: 3.6803508771929825
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CSE-455-401: 3.6806521739130433
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-542-910: 3.71
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-399-003: 3.77
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Here are your options:
-Mar 30, 2016 2:53:32 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Find all courses taught by a specified instructor (Press 4)
-Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
-Find all courses at or above a specified quality rating across all offerings (Press 6)
-Quit the program (Press Q)
+Mar 30, 2016 6:14:48 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: Your input was: q
+Mar 30, 2016 6:14:48 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: Program Ended. Thanks for trying :) 

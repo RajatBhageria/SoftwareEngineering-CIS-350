@@ -1,17 +1,15 @@
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:19 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: SUPPPP
+Mar 30, 2016 6:14:19 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: The inputs are: JSON ratings.json log.log
+Mar 30, 2016 6:14:19 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Here are your options:
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:14:19 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Find all courses taught by a specified instructor (Press 4)
 Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
 Find all courses at or above a specified quality rating across all offerings (Press 6)
 Quit the program (Press Q)
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-101-001: 0.49408284023668636
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-559-001: 0.5173501577287066
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-125-401: 0.5907753537375932
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-125-401: 0.5907753537375933
-Mar 30, 2016 2:30:41 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: CIS-196-001: 0.5970608892970987
+Mar 30, 2016 6:14:22 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: You entered: q
+Mar 30, 2016 6:14:22 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+INFO: Program Ended. Thanks for trying :) 

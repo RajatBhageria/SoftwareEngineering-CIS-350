@@ -1,8 +1,6 @@
 package edu.upenn.cis350.hwk4.logging;
 
 import edu.upenn.cis350.hwk4.Main;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -16,7 +14,6 @@ public class FileLogger extends edu.upenn.cis350.hwk4.logging.Logger {
     private static String logFileName = "src/edu/upenn/cis350/hwk4/" + Main.logName;
 
     private FileLogger() {
-        //super(Logger.getLogger());
         FileHandler fh;
         try {
             fh = new FileHandler(logFileName);
@@ -36,12 +33,11 @@ public class FileLogger extends edu.upenn.cis350.hwk4.logging.Logger {
         }
         return instance;
     }
-    protected final static Logger log = Logger.getLogger("name");
+    protected final static Logger log = Logger.getLogger(Main.logName);
 
     @Override
     public void info(String msg) {
         log.info(msg);
-
     }
 
 
