@@ -12,11 +12,13 @@ import java.util.ArrayList;
  * Created by RajatBhageria on 3/29/16.
  */
 public class TextReader implements FileTypeReader {
+    public TextReader(){
+
+    }
+
     public  ArrayList<String> read() {
         // The name of the file to open.
         String fileName = "src/edu/upenn/cis350/hwk4/" + Main.fileName;
-        //FileLogger.setupLogger(Main.logName);
-        FileLogger logger = FileLogger.getInstance();
         ArrayList<String> array = new ArrayList<String>();
         try {
 
@@ -38,14 +40,14 @@ public class TextReader implements FileTypeReader {
                 //Close the buffer reader
                 bufferReader.close();
             } else if (!file.canRead()) {
-                logger.info("Sorry file cannot be read");
+                Main.subject.setState("Sorry file cannot be read");
                 System.exit(0);
             } else if (!file.isHidden()) {
-                logger.info("Sorry file is hidden");
+                Main.subject.setState("Sorry file is hidden");
                 System.exit(0);
             }
         } catch (Exception e) {
-            logger.info("Error while reading file line by line:" + e.getMessage());
+            Main.subject.setState("Error while reading file line by line:" + e.getMessage());
         }
 
         return array;

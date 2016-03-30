@@ -2,6 +2,7 @@ package edu.upenn.cis350.hwk4.datamanagement;
 
 import edu.upenn.cis350.hwk4.Main;
 import edu.upenn.cis350.hwk4.logging.FileLogger;
+import edu.upenn.cis350.hwk4.logging.Subject;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,8 +19,6 @@ public class JSONReader implements FileTypeReader {
     private String fileName;
     public JSONReader(){
         fileName = "src/edu/upenn/cis350/hwk4/" + Main.fileName;
-        ArrayList<String> array = new ArrayList<String>();
-        //FileLogger.setupLogger(fileName);
         FileLogger logger = FileLogger.getInstance();
         try {
 
@@ -36,49 +35,49 @@ public class JSONReader implements FileTypeReader {
 
                 // Read file line by line and print on the console
                 while ((line = bufferReader.readLine()) != null)   {
-                    array.add(line.substring(line.indexOf("{"),line.indexOf("}")));
+                    jSONArrayList.add(line.substring(line.indexOf("{"),line.indexOf("}")+1));
                 }
                 //Close the buffer reader
                 bufferReader.close();
             }
             else if (!file.canRead()){
-                logger.info("Sorry file cannot be read");
+                Main.subject.setState("Sorry file cannot be read");
                 System.exit(0);
             }
             else if (!file.isHidden()){
-                logger.info("Sorry file is hidden");
+                Main.subject.setState("Sorry file is hidden");
                 System.exit(0);
             }
         }catch(Exception e){
             logger.info("Error while reading file line by line:" + e.getMessage());
         }
     }
+    private ArrayList<String> jSONArrayList = new ArrayList<String>();
+    private ArrayList<String> formattedList = new ArrayList<String>();
+
     public ArrayList<String> read(){
 
         JSONParser parser = new JSONParser();
         JSONObject obj = null;
-        try {
-            obj = (JSONObject)parser.parse("hello");
-        } catch (ParseException e) {
-            e.printStackTrace();
+        for (int i=0; i < jSONArrayList.size();i++){
+            try {
+                obj = (JSONObject)parser.parse(jSONArrayList.get(i));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String course = (String) obj.get("course");
+            String instructor = (String) obj.get("instructor");
+            long enrollment = (Long) obj.get("enrollment");
+            double courseQuality = (Double) obj.get("courseQuality");
+            double courseDifficulty = (Double ) obj.get("courseDifficulty");
+            double instructorQuality = (Double) obj.get("instructorQuality");
+
+            String courseInfo = course + ", " + instructor + ", " + enrollment + ", " +
+                    courseQuality + ", " + courseDifficulty + ", " + instructorQuality;
+            formattedList.add(courseInfo);
         }
-        //String product = (String)obj.get(“product”); // use key as argument Double price = (Double)obj.get(“price”);
-        String course = (String) obj.get("course");
-        String instructor = (String) obj.get("instructor");
-        int enrollment = (Integer) obj.get("enrollment");
-        double courseQuality = (Double) obj.get("courseQuality");
-        double courseDifficulty = (Double ) obj.get("courseDifficulty");
-        double instructorQuality = (Double) obj.get("instructorQuality");
 
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add(course);
-        list.add(instructor);
-        list.add(enrollment+"");
-        list.add(courseQuality+"");
-        list.add(courseDifficulty+"");
-        list.add(instructorQuality+"");
-        return list;
+        return formattedList;
     }
 
 }

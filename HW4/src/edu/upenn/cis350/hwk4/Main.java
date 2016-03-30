@@ -7,6 +7,8 @@ import edu.upenn.cis350.hwk4.logging.ScreenLogger;
 import edu.upenn.cis350.hwk4.logging.Subject;
 import edu.upenn.cis350.hwk4.ui.MainMenu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Main {
@@ -36,7 +38,7 @@ public class Main {
         //ArrayList<String> list = Main.Reader(fileName);
 
         FileTypeReader reader = ReaderFactory.getReader();
-        reader.read();
+        List<String> list = reader.read();
 
 
         FileLogger fileLogger= FileLogger.getInstance();
@@ -46,10 +48,10 @@ public class Main {
 
         subject.setState("YOOOO");
 
-        //Log.setupLogger(logName);
-        //log.info("wassup homies!!!");
-
-
         MainMenu.createMenu();
+        for (String e: list ){
+            System.out.println(e);
+        }
     }
+
 }

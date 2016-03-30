@@ -19,12 +19,5 @@ public class MainMenu {
                 "Quit the program (Press Q)");
         Main.subject.setState(options);
         Main.subject.setState(allOptions);
-
-        //FileLogger fileLogger = FileLogger.getInstance();
-        //ScreenLogger screenLogger = ScreenLogger.getInstance();
-        //fileLogger.info(options);
-        //screenLogger.println(options);
-        //fileLogger.info(allOptions);
-        //screenLogger.println(allOptions);
     }
 }
