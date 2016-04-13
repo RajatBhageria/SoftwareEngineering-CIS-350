@@ -1,30 +1,11 @@
-Mar 30, 2016 6:14:33 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:24:14 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: SUPPPP
-Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:24:14 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: The inputs are: JSON ratings.json log.log
-Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:24:14 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Here are your options:
-Mar 30, 2016 6:14:34 PM edu.upenn.cis350.hwk4.logging.FileLogger info
+Mar 30, 2016 6:24:14 PM edu.upenn.cis350.hwk4.logging.FileLogger info
 INFO: Find all courses taught by a specified instructor (Press 4)
 Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
 Find all courses at or above a specified quality rating across all offerings (Press 6)
 Quit the program (Press Q)
-Mar 30, 2016 6:14:36 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: You entered: 4
-Mar 30, 2016 6:14:36 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Please enter the name of the instructor whose courses you want to see
-Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: The instructor you searched for is: rajiv
-Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: RAJIV GANDHI, CIS-121-001, CIS-160-001, CIS-320-001
-Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Here are your options:
-Mar 30, 2016 6:14:39 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Find all courses taught by a specified instructor (Press 4)
-Find the top five courses with the lowest difficulty-to-quality ratio across all offering (Press 5)
-Find all courses at or above a specified quality rating across all offerings (Press 6)
-Quit the program (Press Q)
-Mar 30, 2016 6:14:48 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Your input was: q
-Mar 30, 2016 6:14:48 PM edu.upenn.cis350.hwk4.logging.FileLogger info
-INFO: Program Ended. Thanks for trying :) 

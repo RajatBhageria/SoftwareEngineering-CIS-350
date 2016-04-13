@@ -26,7 +26,6 @@ public class Main {
         subject = new Subject();
 
         FileLogger fileLogger= FileLogger.getInstance();
-        fileLogger.info("SUPPPP");
         ScreenLogger screenLogger = ScreenLogger.getInstance();
         subject.add(fileLogger);
         subject.add(screenLogger);

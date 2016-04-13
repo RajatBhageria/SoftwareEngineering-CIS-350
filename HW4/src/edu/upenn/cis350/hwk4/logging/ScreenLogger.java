@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by RajatBhageria on 3/28/16.
+ * This follows the singleton design pattern
  */
 public class ScreenLogger extends edu.upenn.cis350.hwk4.logging.Logger {
     private static ScreenLogger screenLogger = null;

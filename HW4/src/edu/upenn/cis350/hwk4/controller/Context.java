@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by RajatBhageria on 3/30/16.
+ * This is used to implement the strategy design pattern
  */
 public class Context {
     private Strategy strategy;

@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 /**
  * Created by RajatBhageria on 3/28/16.
+ * This uses the strategy design pattern
  */
 public class InputReader {
     private Subject subject = Main.subject;

@@ -8,6 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * Created by RajatBhageria on 3/28/16.
+ * This follows the singleton design pattern
  */
 public class FileLogger extends edu.upenn.cis350.hwk4.logging.Logger {
     protected static FileLogger instance = null;
