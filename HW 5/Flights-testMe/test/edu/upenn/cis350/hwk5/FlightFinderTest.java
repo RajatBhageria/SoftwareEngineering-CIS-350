@@ -10,8 +10,9 @@ import org.junit.Test;
 public class FlightFinderTest extends TestCase {
 
     private FlightFinder finder;
+
     @Before
-    public void setup(){
+    public void testSetup(){
         finder = new FlightFinder();
     }
 
@@ -23,6 +24,14 @@ public class FlightFinderTest extends TestCase {
 
     }
 
+
+    @Test
+    public void testCaseSensitive(){
+        assertEquals(1,finder.findFlights(true, "phl", "bos", 0));
+        assertEquals(true, finder.getDirectFlights().contains(new Flight("PHL", "BOS", 95, 185)));
+        assertEquals(true,finder.getIndirectFlights().isEmpty());
+
+    }
     @Test
     public void testDirectOnlyTrueAndSameAirport(){
         assertEquals(0,finder.findFlights(true, "PHL", "PHL", 0));
@@ -32,10 +41,28 @@ public class FlightFinderTest extends TestCase {
     }
 
     @Test
-    public void testDirectOnlyTrueAndNoFlight(){
-        assertEquals(0,finder.findFlights(true, "CDG", "DEL", 0));
+    public void testDirectOnlyFalseAndSameAirport(){
+        assertEquals(0,finder.findFlights(false, "PHL", "PHL", 0));
         assertEquals(true,finder.getDirectFlights().isEmpty());
         assertEquals(true,finder.getIndirectFlights().isEmpty());
+
+    }
+
+    @Test
+    public void testDirectOnlyTrueAndNoFlight(){
+        assertEquals(0,finder.findFlights(true, "PHL", "SEA", 0));
+        assertEquals(true,finder.getDirectFlights().isEmpty());
+        assertEquals(true,finder.getIndirectFlights().isEmpty());
+    }
+
+    @Test
+    public void testDirectOnlyFalseAndOnlyIndirectFlight(){
+        assertEquals(1,finder.findFlights(false, "PHL", "SEA", 0));
+        assertEquals(true,finder.getDirectFlights().isEmpty());
+        assertEquals(true,finder.getIndirectFlights().contains(new Flight[]
+                {new Flight("PHL", "ORD", 100, 270), new Flight("ORD", "SEA", 225, 300)}));
+        assertEquals(false,finder.getIndirectFlights().isEmpty());
+
     }
 
 
@@ -118,5 +145,32 @@ public class FlightFinderTest extends TestCase {
         assertEquals(1,finder.findFlights(true, "SFO", "DET", 260));
         assertEquals(3,finder.getNumSearches());
     }
+
+    @Test
+    public void testNumSearchesMultipleAndIllegalDestination(){
+        assertEquals(-1,finder.findFlights(false, "PHL", "DEL", 260));
+        assertEquals(-1,finder.findFlights(false, "PHL", "MAD", 260));
+        assertEquals(1,finder.findFlights(true, "SFO", "DET", 260));
+        assertEquals(1,finder.getNumSearches());
+
+    }
+
+    @Test
+    public void testNumSearchesWhenNegativeTime(){
+        assertEquals(-1,finder.findFlights(false, "PHL", "CDG", -1));
+        assertEquals(0,finder.getNumSearches());
+        assertEquals(true,finder.getIndirectFlights().isEmpty());
+        assertEquals(true,finder.getDirectFlights().isEmpty());
+    }
+
+    @Test
+    public void testNumSearchesWhenDirectFalseAndNegativeTimeAndIllegalDest(){
+        assertEquals(-1,finder.findFlights(false, "PHL", "MAD", -1));
+        assertEquals(0,finder.getNumSearches());
+        assertEquals(true,finder.getIndirectFlights().isEmpty());
+        assertEquals(true,finder.getDirectFlights().isEmpty());
+    }
+
+
 
 }
